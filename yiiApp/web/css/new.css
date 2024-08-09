@@ -1,0 +1,30 @@
+.form-control-size
+{
+	width:25%;
+	height:26px;
+	border-radius:5px;
+}
+.btn
+{
+	margin-left:10px;
+}
+.form-control
+{
+	width:25%;
+}
+.frm
+{
+	/*background-color:rgb(59,63,70);*/
+	color:black;
+}
+.txt
+{
+	border-radius:5px;
+	width:30%;
+	height:35px;
+	border:1px solid gray;
+	margin:10px;
+	padding-left:5px;
+	background-color:inherit;
+	
+}
