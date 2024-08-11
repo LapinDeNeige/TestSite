@@ -27,19 +27,21 @@ if(!Yii::$app->user->isGuest)
 {
 	$columns=[
 	'Name',
+	'Task',
 	];
 	
-	$dP=new ActiveDataProvider(['query'=>$query,'pagination'=>['pageSize'=>20,],]);
+	$dP=new ActiveDataProvider(['query'=>$query]);
 	
 	echo '<div class="tbl-container">';
 	
 		echo GridView::widget([
-		'options'=>['class'=>'tbl'],
+		'options'=>['style'=>'width:99%;'],
 		'tableOptions'=>['class'=>'tbl'],
 		'dataProvider'=>$dP,
 		'columns'=>$columns,
 		'layout'=>'{items}{pager}',
 		'showHeader'=>true,
+		'formatter'=>['class'=>'yii\i18n\Formatter','nullDisplay'=>'',],
 		],
 		); 
 	
@@ -47,8 +49,10 @@ if(!Yii::$app->user->isGuest)
 	
 	
 	Modal::begin(['id'=>'dlg','title'=>'Add new task','options'=>['class'=>'frm']]);
-		$form=ActiveForm::begin(['id'=>'form','method'=>'post','action'=>['controllers/form']]);
-			echo $form->field($addModel,'name')->textInput(['class'=>'txt']);
+		$form=ActiveForm::begin(['id'=>'form','method'=>'post','action'=>['add']]);
+			echo $form->field($addModel,'name')->textInput(['class'=>'txt','name'=>'nm']);
+			echo $form->field($addModel,'task')->textInput(['class'=>'txt','name'=>'tsk']);
+			
 			echo '<div class="display:block;">';
 				echo Html::submitButton('Save',['class'=>'btn-dark btn']);
 				
@@ -57,12 +61,7 @@ if(!Yii::$app->user->isGuest)
 	Modal::end();
 	
 	
-/*
-$form=ActiveForm::begin(['id'=>'form']);
-		echo $form->field($addModel,'name');
-		echo Html::submitButton('Save');
-ActiveForm::end();
-*/
+
 }
 else
 {

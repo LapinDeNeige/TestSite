@@ -7,6 +7,11 @@ use yii\rest\ActiveController;
 
 class RestController extends ActiveController;
 {
+	public function tableName()
+	{
+		return ['tbl'];
+		
+	}
 	public function actionIndex()
 	{
 		return Users::getAll();

@@ -153,8 +153,9 @@ dialog
 	color:white;
 	width:inherit;
 	margin-bottom:30px;
-	padding:20px;
+	padding:40px;
 	border-radius:12px;
+	margin-top:40px;
 }
 .tbl-container
 {

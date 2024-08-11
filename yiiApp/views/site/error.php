@@ -7,7 +7,8 @@
 
 use yii\helpers\Html;
 
-$this->title = $name;
+//$this->title = $name;
+$this->title = 'Error';
 
 $this->registerJsFile(Yii::$app->request->baseUrl.'/js/script.js');
 $this->registerCssFile(Yii::$app->request->baseUrl.'/css/new.css');

@@ -19,6 +19,9 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+	 private $query=null;
+	 private $addModel=null;
+	 
     public function behaviors()
     {
         return [
@@ -80,10 +83,13 @@ class SiteController extends Controller
     {
 		
 		$query=Pro::find();
+		$this->query=$query;
+	
 		$AddForm=new AddForm();
+		$this->addModel=$AddForm;
 		
-		$pg=new Pagination(['defaultPageSize'=>5,'totalCount'=>$query->count()]);
-		return $this->render('index',['query'=>$query,'pagination'=>$pg,'addModel'=>$AddForm]);
+		//$pg=new Pagination(['defaultPageSize'=>5,'totalCount'=>$query->count()]);
+		return $this->render('index',['query'=>$query,'addModel'=>$AddForm]);
 		
     }
 
@@ -94,9 +100,18 @@ class SiteController extends Controller
 	*/
 	public function actionAdd()
 	{
-		if(Yii::$app->request->post())
+		if(isset($_POST['nm']) && isset($_POST['tsk'])) //change to post()
 		{
+			$name=$_POST['nm'];
+			$task=$_POST['tsk'];
 			
+			$newData=new Pro();
+			$newData->Name=$name;
+			$newData->Task=$task;
+			
+			$newData->save();
+			
+			return $this->goHome();
 		}
 		
 	}
